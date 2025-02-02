@@ -25,7 +25,7 @@ func main() {
 		}
 
 		if len(files) == 0 {
-			fmt.Println("⚠️ No files to commit.")
+			fmt.Println("no files to commit")
 			return
 		}
 
