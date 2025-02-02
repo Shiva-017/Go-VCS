@@ -20,7 +20,7 @@ func main() {
 	case "commit":
 		files, err := vcs.GetAllFiles("./Repository")
 		if err != nil {
-			fmt.Println("❌ Error getting files:", err)
+			fmt.Println("error reading files:", err)
 			return
 		}
 
