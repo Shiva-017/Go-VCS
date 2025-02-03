@@ -47,6 +47,6 @@ func main() {
 		commitID := os.Args[2]
 		repo.Revert(commitID)
 	default:
-		fmt.Println("Unknown command:", command)
+		fmt.Printf("unknown command: %s\n", command)
 	}
 }
