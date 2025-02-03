@@ -41,7 +41,7 @@ func main() {
 		repo.History()
 	case "revert":
 		if len(os.Args) < 3 {
-			fmt.Println("Usage: go-vcs revert <commit-id>")
+			fmt.Println("usage: go-vcs revert <commit-id>")
 			return
 		}
 		commitID := os.Args[2]
