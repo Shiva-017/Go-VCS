@@ -33,7 +33,7 @@ func main() {
 		if len(os.Args) > 2 {
 			commitMessage = os.Args[2]
 		} else {
-			commitMessage = "Default commit message"
+			commitMessage = "auto commit"
 		}
 
 		repo.Commit(files, commitMessage)
