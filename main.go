@@ -10,7 +10,7 @@ func main() {
 	repo := vcs.NewRepository()
 
 	if len(os.Args) < 2 {
-		fmt.Println("Usage: go-vcs <command> [args]")
+		fmt.Println("usage: go-vcs <command> [args]")
 		return
 	}
 
