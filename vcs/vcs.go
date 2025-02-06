@@ -12,7 +12,7 @@ import (
 // Repository stores commit history
 type Repository struct{}
 
-// NewRepository initializes a repository
+// NewRepository initializes a new VCS repository
 func NewRepository() *Repository {
 	InitDB()
 	return &Repository{}
