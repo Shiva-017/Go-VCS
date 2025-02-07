@@ -18,7 +18,7 @@ func NewRepository() *Repository {
 	return &Repository{}
 }
 
-// Add reads file contents
+// Add reads and returns a map of file path to content
 func (repo *Repository) Add(files []string) map[string]string {
 	fileData := make(map[string]string)
 
