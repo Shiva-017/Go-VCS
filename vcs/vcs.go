@@ -25,7 +25,7 @@ func (repo *Repository) Add(files []string) map[string]string {
 	for _, file := range files {
 		content, err := os.ReadFile(file)
 		if err != nil {
-			fmt.Println("Error reading file:", file)
+			fmt.Printf("error reading file %s: %v\n", file, err)
 			continue
 		}
 
