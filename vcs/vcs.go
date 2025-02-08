@@ -30,7 +30,7 @@ func (repo *Repository) Add(files []string) map[string]string {
 		}
 
 		fileData[file] = string(content)
-		fmt.Println("Added:", file)
+		fmt.Printf("staged: %s\n", file)
 	}
 
 	return fileData
