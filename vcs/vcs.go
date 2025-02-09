@@ -47,7 +47,7 @@ func (repo *Repository) Commit(files []string, message string) {
 
 	root := merkle.BuildMerkleTree(hashes)
 	if root == nil {
-		fmt.Println("No files to commit.")
+		fmt.Println("nothing to commit")
 		return
 	}
 
