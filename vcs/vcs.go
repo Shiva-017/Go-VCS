@@ -36,7 +36,7 @@ func (repo *Repository) Add(files []string) map[string]string {
 	return fileData
 }
 
-// Commit creates a snapshot
+// Commit creates a Merkle-tree snapshot of the repository
 func (repo *Repository) Commit(files []string, message string) {
 	fileData := repo.Add(files)
 	var hashes []string
