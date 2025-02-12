@@ -58,7 +58,7 @@ func (repo *Repository) Commit(files []string, message string) {
 	fmt.Println("Commit successful! Root hash:", root.Hash)
 }
 
-// History shows commit history
+// History prints all commits in chronological order
 func (repo *Repository) History() {
 	commitIDs, messages := GetCommitHistory()
 
