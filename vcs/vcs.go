@@ -78,7 +78,7 @@ func (repo *Repository) Revert(commitID string) {
 	rootHash, files := GetCommit(commitID)
 
 	if rootHash == "" || files == nil {
-		fmt.Println("❌ Error: Commit not found. Ensure you are using the full commit ID from history.")
+		fmt.Println("error: commit not found")
 		return
 	}
 
