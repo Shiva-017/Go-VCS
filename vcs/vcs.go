@@ -69,7 +69,7 @@ func (repo *Repository) History() {
 	}
 
 	for i := 0; i < len(commitIDs); i++ {
-		fmt.Printf("🔹 Commit ID: %s | 📝 Message: %s\n", commitIDs[i], messages[i])
+		fmt.Printf("  %s  %s\n", commitIDs[i], messages[i])
 	}
 }
 
