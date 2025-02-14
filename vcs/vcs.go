@@ -73,7 +73,7 @@ func (repo *Repository) History() {
 	}
 }
 
-// Revert restores files
+// Revert restores the working directory to a previous commit
 func (repo *Repository) Revert(commitID string) {
 	rootHash, files := GetCommit(commitID)
 
