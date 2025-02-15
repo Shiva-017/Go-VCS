@@ -15,7 +15,7 @@ func InitDB() *sql.DB {
 	if _, err := os.Stat(dbFile); os.IsNotExist(err) {
 		file, err := os.Create(dbFile)
 		if err != nil {
-			fmt.Println("Error creating database:", err)
+			fmt.Printf("error creating db file: %v\n", err)
 		}
 		file.Close()
 	}
