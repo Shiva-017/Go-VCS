@@ -86,7 +86,7 @@ func (repo *Repository) Revert(commitID string) {
 	for filename, content := range files {
 		err := os.WriteFile(filename, []byte(content), 0644)
 		if err != nil {
-			fmt.Println("⚠️ Error restoring", filename, ":", err)
+			fmt.Printf("error restoring %s: %v\n", filename, err)
 			continue
 		}
 		fmt.Println("✅ Restored:", filename)
