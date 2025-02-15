@@ -10,7 +10,7 @@ import (
 
 const dbFile = "vcs.db"
 
-// initializes the database
+// InitDB opens (or creates) the SQLite database and runs schema migrations
 func InitDB() *sql.DB {
 	if _, err := os.Stat(dbFile); os.IsNotExist(err) {
 		file, err := os.Create(dbFile)
