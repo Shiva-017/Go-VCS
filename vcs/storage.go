@@ -22,7 +22,7 @@ func InitDB() *sql.DB {
 
 	db, err := sql.Open("sqlite3", dbFile)
 	if err != nil {
-		fmt.Println("Error opening database:", err)
+		fmt.Printf("error opening db: %v\n", err)
 	}
 
 	createTable := `
