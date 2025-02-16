@@ -41,7 +41,7 @@ func InitDB() *sql.DB {
 	`
 	_, err = db.Exec(createTable)
 	if err != nil {
-		fmt.Println("Error creating tables:", err)
+		fmt.Printf("error creating schema: %v\n", err)
 	}
 
 	return db
