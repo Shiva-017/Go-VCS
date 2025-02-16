@@ -47,7 +47,7 @@ func InitDB() *sql.DB {
 	return db
 }
 
-// SaveCommit stores a commit in the database
+// SaveCommit persists a commit and its file snapshots to the database
 func SaveCommit(commitID, timestamp, rootHash string, files map[string]string, message string) {
 	db := InitDB()
 	defer db.Close()
