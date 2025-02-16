@@ -102,7 +102,7 @@ func GetAllFiles(directory string) ([]string, error) {
 		if err != nil {
 			return err
 		}
-		// Only include files that are not directories and not hidden
+		// skip directories and hidden files
 		if !info.IsDir() && !strings.HasPrefix(info.Name(), ".") {
 			files = append(files, path)
 		}
