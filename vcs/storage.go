@@ -65,7 +65,7 @@ func SaveCommit(commitID, timestamp, rootHash string, files map[string]string, m
 	}
 }
 
-// GetCommit retrieves a commit and its associated files
+// GetCommit returns the root hash and file map for a given commit ID
 func GetCommit(commitID string) (string, map[string]string) {
 	db := InitDB()
 	defer db.Close()
