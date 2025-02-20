@@ -60,7 +60,7 @@ func SaveCommit(commitID, timestamp, rootHash string, files map[string]string, m
 	for filename, content := range files {
 		_, err = db.Exec("INSERT INTO files (commit_id, filename, content) VALUES (?, ?, ?)", commitID, filename, content)
 		if err != nil {
-			fmt.Println("Error saving file:", err)
+			fmt.Printf("error saving file %s: %v\n", filename, err)
 		}
 	}
 }
