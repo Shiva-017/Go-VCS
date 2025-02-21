@@ -95,7 +95,7 @@ func GetCommit(commitID string) (string, map[string]string) {
 	}
 
 	if len(files) == 0 {
-		fmt.Println("⚠️ No files found for this commit.")
+		fmt.Println("warning: no files found for this commit")
 	}
 
 	return rootHash, files
