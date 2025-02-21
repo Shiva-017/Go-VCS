@@ -73,7 +73,7 @@ func GetCommit(commitID string) (string, map[string]string) {
 	var rootHash string
 	err := db.QueryRow("SELECT root_hash FROM commits WHERE id = ?", commitID).Scan(&rootHash)
 	if err != nil {
-		fmt.Println("❌ Error: Commit not found. Make sure you are using the full commit ID.")
+		fmt.Println("error: commit not found")
 		return "", nil
 	}
 
