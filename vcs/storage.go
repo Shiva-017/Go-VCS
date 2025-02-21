@@ -79,7 +79,7 @@ func GetCommit(commitID string) (string, map[string]string) {
 
 	rows, err := db.Query("SELECT filename, content FROM files WHERE commit_id = ?", commitID)
 	if err != nil {
-		fmt.Println("❌ Error retrieving files for commit:", commitID)
+		fmt.Printf("error querying files for commit %s\n", commitID)
 		return "", nil
 	}
 	defer rows.Close()
