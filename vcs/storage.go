@@ -108,7 +108,7 @@ func GetCommitHistory() ([]string, []string) {
 
 	rows, err := db.Query("SELECT id, message FROM commits")
 	if err != nil {
-		fmt.Println("Error retrieving history:", err)
+		fmt.Printf("error querying commit history: %v\n", err)
 		return nil, nil
 	}
 	defer rows.Close()
