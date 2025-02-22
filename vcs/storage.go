@@ -88,7 +88,7 @@ func GetCommit(commitID string) (string, map[string]string) {
 	for rows.Next() {
 		var filename, content string
 		if err := rows.Scan(&filename, &content); err != nil {
-			fmt.Println("⚠️ Error scanning file data:", err)
+			fmt.Printf("error scanning file row: %v\n", err)
 			continue
 		}
 		files[filename] = content
