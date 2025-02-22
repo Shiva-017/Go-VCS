@@ -101,7 +101,7 @@ func GetCommit(commitID string) (string, map[string]string) {
 	return rootHash, files
 }
 
-// GetCommitHistory returns all commit IDs
+// GetCommitHistory returns all commit IDs and messages ordered by insertion
 func GetCommitHistory() ([]string, []string) {
 	db := InitDB()
 	defer db.Close()
