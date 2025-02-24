@@ -13,7 +13,7 @@ type Node struct {
 	Right *Node
 }
 
-// ComputeHash generates a SHA-256 hash for a given input
+// ComputeHash returns the hex-encoded SHA-256 digest of data
 func ComputeHash(data string) string {
 	hash := sha256.Sum256([]byte(data))
 	return hex.EncodeToString(hash[:])
