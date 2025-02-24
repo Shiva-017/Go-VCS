@@ -29,7 +29,8 @@ func InitDB() *sql.DB {
 	CREATE TABLE IF NOT EXISTS commits (
 		id TEXT PRIMARY KEY,
 		timestamp TEXT,
-		root_hash TEXT
+		root_hash TEXT,
+		message TEXT
 	);
 	CREATE TABLE IF NOT EXISTS files (
 		commit_id TEXT,
@@ -47,11 +48,11 @@ func InitDB() *sql.DB {
 }
 
 // SaveCommit stores a commit in the database
-func SaveCommit(commitID, timestamp, rootHash string, files map[string]string) {
+func SaveCommit(commitID, timestamp, rootHash string, files map[string]string, message string) {
 	db := InitDB()
 	defer db.Close()
 
-	_, err := db.Exec("INSERT INTO commits (id, timestamp, root_hash) VALUES (?, ?, ?)", commitID, timestamp, rootHash)
+	_, err := db.Exec("INSERT INTO commits (id, timestamp, root_hash, message) VALUES (?, ?, ?, ?)", commitID, timestamp, rootHash, message)
 	if err != nil {
 		fmt.Println("Error saving commit:", err)
 	}
@@ -101,23 +102,30 @@ func GetCommit(commitID string) (string, map[string]string) {
 }
 
 // GetCommitHistory returns all commit IDs
-func GetCommitHistory() []string {
+func GetCommitHistory() ([]string, []string) {
 	db := InitDB()
 	defer db.Close()
 
-	rows, err := db.Query("SELECT id FROM commits")
+	rows, err := db.Query("SELECT id, message FROM commits")
 	if err != nil {
 		fmt.Println("Error retrieving history:", err)
-		return nil
+		return nil, nil
 	}
 	defer rows.Close()
 
 	var commitIDs []string
+	var messages []string
 	for rows.Next() {
 		var commitID string
-		rows.Scan(&commitID)
+		var message string
+		err := rows.Scan(&commitID, &message)
+		if err != nil {
+			fmt.Println("Error scanning commit:", err)
+			continue
+		}
 		commitIDs = append(commitIDs, commitID)
+		messages = append(messages, message)
 	}
 
-	return commitIDs
+	return commitIDs, messages
 }

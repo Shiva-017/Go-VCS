@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"go-vcs/merkle"
 	"os"
+	"path/filepath"
+	"strings"
 	"time"
 )
 
@@ -35,7 +37,7 @@ func (repo *Repository) Add(files []string) map[string]string {
 }
 
 // Commit creates a snapshot
-func (repo *Repository) Commit(files []string) {
+func (repo *Repository) Commit(files []string, message string) {
 	fileData := repo.Add(files)
 	var hashes []string
 
@@ -52,16 +54,22 @@ func (repo *Repository) Commit(files []string) {
 	commitID := merkle.ComputeHash(time.Now().String())
 	timestamp := time.Now().Format(time.RFC3339)
 
-	SaveCommit(commitID, timestamp, root.Hash, fileData)
+	SaveCommit(commitID, timestamp, root.Hash, fileData, message)
 	fmt.Println("Commit successful! Root hash:", root.Hash)
 }
 
 // History shows commit history
 func (repo *Repository) History() {
-	commitIDs := GetCommitHistory()
+	commitIDs, messages := GetCommitHistory()
+
 	fmt.Println("📜 Commit History:")
-	for _, id := range commitIDs {
-		fmt.Println("🔹 Commit ID:", id) // Print full commit ID
+	if len(commitIDs) == 0 {
+		fmt.Println("⚠️ No commits found.")
+		return
+	}
+
+	for i := 0; i < len(commitIDs); i++ {
+		fmt.Printf("🔹 Commit ID: %s | 📝 Message: %s\n", commitIDs[i], messages[i])
 	}
 }
 
@@ -85,4 +93,21 @@ func (repo *Repository) Revert(commitID string) {
 	}
 
 	fmt.Println("✔️ Revert successful!")
+}
+
+func GetAllFiles(directory string) ([]string, error) {
+	var files []string
+
+	err := filepath.Walk(directory, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		// Only include files that are not directories and not hidden
+		if !info.IsDir() && !strings.HasPrefix(info.Name(), ".") {
+			files = append(files, path)
+		}
+		return nil
+	})
+
+	return files, err
 }

@@ -18,7 +18,25 @@ func main() {
 
 	switch command {
 	case "commit":
-		repo.Commit(os.Args[2:])
+		files, err := vcs.GetAllFiles("./Repository")
+		if err != nil {
+			fmt.Println("❌ Error getting files:", err)
+			return
+		}
+
+		if len(files) == 0 {
+			fmt.Println("⚠️ No files to commit.")
+			return
+		}
+
+		var commitMessage string
+		if len(os.Args) > 2 {
+			commitMessage = os.Args[2]
+		} else {
+			commitMessage = "Default commit message"
+		}
+
+		repo.Commit(files, commitMessage)
 	case "history":
 		repo.History()
 	case "revert":
