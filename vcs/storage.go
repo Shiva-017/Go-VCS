@@ -120,7 +120,7 @@ func GetCommitHistory() ([]string, []string) {
 		var message string
 		err := rows.Scan(&commitID, &message)
 		if err != nil {
-			fmt.Println("Error scanning commit:", err)
+			fmt.Printf("error scanning commit row: %v\n", err)
 			continue
 		}
 		commitIDs = append(commitIDs, commitID)
