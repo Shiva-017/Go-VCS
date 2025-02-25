@@ -19,7 +19,7 @@ func ComputeHash(data string) string {
 	return hex.EncodeToString(hash[:])
 }
 
-// BuildMerkleTree constructs a full Merkle Tree from a list of file hashes
+// BuildMerkleTree builds a binary Merkle tree from leaf hashes
 func BuildMerkleTree(hashes []string) *Node {
 	if len(hashes) == 0 {
 		return nil
