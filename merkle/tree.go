@@ -54,7 +54,7 @@ func BuildMerkleTree(hashes []string) *Node {
 	return buildTreeFromNodes(nodes)
 }
 
-// Helper function to build a tree from parent nodes
+// buildTreeFromNodes recursively pairs nodes until a single root remains
 func buildTreeFromNodes(nodes []*Node) *Node {
 	if len(nodes) == 1 {
 		return nodes[0]
