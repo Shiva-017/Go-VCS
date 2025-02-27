@@ -98,7 +98,7 @@ func GenerateProof(root *Node, fileHash string) ([][2]string, bool) {
 	return path, found
 }
 
-// Helper function to find the proof path in the Merkle tree
+// findProof performs DFS to locate fileHash and accumulate its sibling path
 func findProof(node *Node, fileHash string, path *[][2]string) bool {
 	if node == nil {
 		return false
