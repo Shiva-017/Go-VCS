@@ -91,7 +91,7 @@ func PrintTree(node *Node, level int) {
 	PrintTree(node.Right, level+1)
 }
 
-// GenerateProof generates a Merkle path for a given file hash
+// GenerateProof returns the sibling path needed to verify a leaf hash
 func GenerateProof(root *Node, fileHash string) ([][2]string, bool) {
 	var path [][2]string // Each entry is (siblingHash, "L" or "R")
 	found := findProof(root, fileHash, &path)
