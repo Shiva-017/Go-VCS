@@ -111,7 +111,7 @@ func findProof(node *Node, fileHash string, path *[][2]string) bool {
 	// Search in left subtree
 	if node.Left != nil && findProof(node.Left, fileHash, path) {
 		if node.Right != nil {
-			*path = append(*path, [2]string{node.Right.Hash, "R"}) // Right sibling
+			*path = append(*path, [2]string{node.Right.Hash, "R"})
 		}
 		return true
 	}
