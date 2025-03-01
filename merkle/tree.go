@@ -127,7 +127,7 @@ func findProof(node *Node, fileHash string, path *[][2]string) bool {
 	return false
 }
 
-// VerifyProof checks if a given file hash is part of the Merkle tree
+// VerifyProof recomputes the root from a leaf hash and its proof path
 func VerifyProof(fileHash string, proof [][2]string, rootHash string) bool {
 	computedHash := fileHash
 
