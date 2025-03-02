@@ -135,7 +135,7 @@ func VerifyProof(fileHash string, proof [][2]string, rootHash string) bool {
 		siblingHash, position := entry[0], entry[1]
 
 		if position == "L" {
-			computedHash = ComputeHash(siblingHash + computedHash) 
+			computedHash = ComputeHash(siblingHash + computedHash)
 		} else {
 			computedHash = ComputeHash(computedHash + siblingHash) 
 		}
